@@ -138,14 +138,16 @@ class TuringMachine{
 		
 			
 		if(this.#nastroLoaded ){
-			for(let i=0; this.input[0]=="$"; i++){
-				this.input.shift();
-			}
-			for(let i=0; i<Math.max(this.input.toString().indexOf("$"),3); i++){
-				this.input.unshift("$");
+			if(this.#paused){
+				for(let i=0; this.input[0]=="$"; i++){
+					this.input.shift();
+				}
+				for(let i=0; i<Math.max(this.input.toString().indexOf("$"),3); i++){
+					this.input.unshift("$");
+				}
 			}
 			var log 		= "";
-			var idxT, inputT;
+			var inputT;
 			this.#paused 	= true;
 			this.#old.push([this.input.map((x)=>x),this.#idx,this.#nowInstance.clone()]);
 			for(const p of this.#Produzioni){
@@ -156,7 +158,6 @@ class TuringMachine{
 					this.#paused				 = false;
 					this.#idx 			    	+= resp.dir=="r"? 1:-1;
 					log					    	+= p.toString();
-					idxT						 = this.#idx;
 					inputT						 = this.input;
 					
 					if(!this.input[this.#idx]) 
