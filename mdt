@@ -38,7 +38,7 @@ Y q11 0 q11 l
 $ q11 $ q12 r
 }
 
-polinomial{
+polinomial: Stati finali q9,qm{
 $ qi $ q1 r
 
 1 q1 A q2 r
