@@ -1,0 +1,160 @@
+<html>
+	<head>
+		<script src="MdT.js"></script>
+		<script src="index.js"></script>
+		<style>
+			
+			
+			textarea{
+				resize			: none;
+				outline			: none;
+			}
+			
+			input[type="button"]{
+				width			: 60px;
+				height			: 35px;
+				font-size		: 18px;
+				padding-top		: 4px;
+				margin-left		: 2%;
+				background-color: #fff;
+				outline			: none;
+				border-color	: #aaa #777 #777 #aaa;
+			}
+			
+			input[type="button"]:active{
+				background-color: #ddd;
+			}
+			
+			#operation{
+				width					: 80%;
+			}
+			
+			#div_d1{
+				position				: absolute;
+				width					: 60%;
+			}
+				
+			#speedRange{
+				width				: 95%;
+				-webkit-appearance	: none;
+				margin-top			: 25px;
+				height				: 10px;
+				border-radius		: 5px;  
+				background			: #d3d3d3;
+				outline				: none;
+				opacity				: 0.7;
+				-webkit-transition	: .2s;
+				transition			: opacity .2s;
+			}
+			#speedRange::-webkit-slider-thumb {
+				-webkit-appearance	: none;
+				appearance			: none;
+				width				: 25px;
+				height				: 25px;
+				border-radius		: 50%; 
+				background			: #333;
+				cursor				: pointer;
+			}
+
+			#speedRange::-moz-range-thumb {
+				width				: 25px;
+				height				: 25px;
+				border-radius		: 50%;
+				background			: #333;
+				cursor				: pointer;
+			}
+			
+			#ckb_div{
+				width			: 85%;
+				height			: 35px;
+				margin-top		: 25px;
+			}
+			
+			#nomus{
+				margin-top		: 2px;
+				float			: left;
+			}
+			
+			#button_div{
+				margin-top		: 30px;
+				width			: 440px;
+			}
+			
+			#Produzioni_div{
+				height			: 100%;
+				width			: 35%;
+				float			: left;
+			}
+			
+			#Produzioni_txta{
+				width			: 100%;
+				height			: 80%;
+				
+			}
+			
+			#MDT_div{
+				height			: 100%;
+				width			: 60%;
+				float			: left;
+			}
+			
+			#enableState{
+				bottom			: 0;
+				float			: right;
+			}
+			
+			#Stati_txta{
+				width			: 90%;
+				margin-top		: 25px;
+				height			: 50px;
+			}
+			
+			#nastro{
+				width			: 90%;
+				font-size		: 1.4em;
+				letter-spacing	: .4rem;
+				border 			: .1px solid #bbb;
+				line-height		: 2em;
+				padding			: 0 .5em;
+				outline			: none;
+			}
+			
+			#titolo{
+				text-align		: center;
+				width			: 55%;
+				margin-left		: 22.5%;
+				padding			: 10px;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<div id="Produzioni_div">
+			<h2>Produzioni</h2>
+			<textarea id="Produzioni_txta"></textarea>
+		</div>
+		<div id="MDT_div">
+			<h1 id="titolo">Macchina di Turing</h1>
+			<div id="div_d1">
+				<div contenteditable id="nastro">
+				</div>
+				<div id="operation">
+					<div id="button_div">
+						<input type="button" id="runTimeBtn" value="RUN">
+						<input type="button" id="beforeBtn"  value="<">
+						<input type="button" id="pauseBtn"   value="II">
+						<input type="button" id="nextBtn"    value=">">
+						<input type="button" id="endBtn"     value=">>">
+						<input type="button" id="loadNa"     value="RST">
+					</div>
+					<input type="range" id="speedRange" min="1" max="60">
+				</div>
+				<div id="ckb_div">
+					<p id="nomus">Stati Finali Manuali</p>
+					<input type="checkbox" id="enableState" onclick="cliccato()">
+				</div>
+			</div>
+			<textarea id="Stati_txta"></textarea>
+		</div>
+	</body>
+</html>
