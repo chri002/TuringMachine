@@ -106,6 +106,7 @@ class TuringMachine{
 		this.input = xres[0].map((x)=>(x==""? "$":x));
 		this.#idx  = xres[1];
 		this.#nowInstance  = xres[2].clone();
+		this.#end			= false;
 	}
 	
 	loadNastro(inputS){
@@ -134,7 +135,15 @@ class TuringMachine{
 	}
 	
 	next(){
+		
+			
 		if(this.#nastroLoaded ){
+			for(let i=0; this.input[0]=="$"; i++){
+				this.input.shift();
+			}
+			for(let i=0; i<Math.max(this.input.toString().indexOf("$"),3); i++){
+				this.input.unshift("$");
+			}
 			var log 		= "";
 			var idxT, inputT;
 			this.#paused 	= true;
@@ -165,19 +174,22 @@ class TuringMachine{
 				}
 			}
 		
-			if(this.#paused!=false){
+			if(this.#paused!=false && !this.#end){
 				this.#run = false;
-				return {res: "ERROR", nameError: "InstanceNotReconise", definition:"The Instance '"+this.#nowInstance.toString()+"' is not reconise, are you sure that is right?", toString:function(){return this.nameError+":\n"+this.definition;}};
+				return {res: "ERROR", Istance: new Instance("X",2), nameError: "InstanceNotReconise", definition:"The Instance '"+this.#nowInstance.toString()+"' is not reconise, are you sure that is right?", toString:function(){return this.nameError+":\n"+this.definition;}};
 			}else{
+				if(this.#end){
+					return {res: inputT, indice : -1, Istance: this.#nowInstance.clone(), toString:function(){return this.nameError+":\n"+this.definition}};
+				}
 				return {res: inputT, indice : this.#idx, Istance: this.#nowInstance.clone(), toString:function(){return this.nameError+":\n"+this.definition}};
 			}
 		}else{
 			if(this.#end){
-				return {res: this.#old[this.#old.length-1][0].map((x)=>(x=="$"? "":x)), indice : -1, Istance: this.#nowInstance.clone(), toString:function(){return this.nameError+":\n"+this.definition}};
+				return {res: this.input.toString().replaceAll("$",""), indice : -1, Istance: this.#nowInstance.clone(), toString:function(){return this.nameError+":\n"+this.definition}};
 			}
 				
 			this.#run = false;
-			return {res:"ERROR", nameError: "NotLoadedNastro", definition:"The nastro is not loaded, please load the nastro", toString:function(){return this.nameError+":\n"+this.definition;}};
+			return {res:"ERROR", Istance: new Instance("X",2), nameError: "NotLoadedNastro", definition:"The nastro is not loaded, please load the nastro", toString:function(){return this.nameError+":\n"+this.definition;}};
 		}
 	}
 	

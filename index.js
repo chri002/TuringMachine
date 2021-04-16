@@ -26,6 +26,10 @@ window.onload = function(){
 	$i("nastro").onkeyup			= (e) => {
 		MdT.loadNastro($i("nastro").textContent); 
 	};
+	$i("nastro").onclick			= () => {
+		MdT.loadNastro($i("nastro").textContent); 
+	};
+	
 			
 	$i("enableState").onclick 		= () => {cliccato();};
 	$i("nastro").onclick 			= () => {
@@ -35,12 +39,16 @@ window.onload = function(){
 			if(!MdT.isReady()) MdT.loadNastro($i("nastro").textContent); 
 			else MdT.reloadOld();
 		}
+		$i("endBtn").enable = true;
+		$i("nextBtn").enable = true;
 	};
 	$i("loadNa").onclick		= () => {
 		if(MdT!=null){
 			creaMdT(); 
 			writer.write({V:"", I:-1});			
 		}
+			$i("endBtn").enable = true;
+			$i("nextBtn").enable = true;
 	};
 	$i("endBtn").onclick		= () => {
 		if(MdT==null) 
@@ -49,13 +57,14 @@ window.onload = function(){
 			if(!MdT.isReady() && !MdT.isEnded()) MdT.loadNastro($i("nastro").textContent); 
 			else MdT.reloadOld();
 			
-			MdT.doProduction();
-			var resa = MdT.next();
-				console.log(resa);
+			var resa  = MdT.doProduction();
+			console.log(resa);
 			if(resa.res!="ERROR")
 				writer.write({V: resa.res.toString().replaceAll(",",""), I:resa.indice});
 			else
 				console.log(resa);
+			$i("endBtn").enable = false;
+			$i("nextBtn").enable = false;
 		}
 	};
 	$i("nextBtn").onclick		= () => {
@@ -86,6 +95,8 @@ window.onload = function(){
 			if(resa.Istance.getState().getType()==0){
 				MdT.reset();
 			} 
+			$i("endBtn").enable = true;
+			$i("nextBtn").enable = true;
 		}
 	};
 	$i("pauseBtn").onclick		= () => {
