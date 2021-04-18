@@ -4,25 +4,44 @@
 		<script src="index.js"></script>
 		<style>
 			
+			html,body{
+				padding					: 0;
+				margin					: 0;
+				overflow-y				: hidden;
+				min-height				: 450px;
+				min-width				: 815px;
+			}
 			
 			textarea{
-				resize			: none;
-				outline			: none;
+				resize					: none;
+				outline					: none;
+				overflow				: scroll;
 			}
 			
 			input[type="button"]{
-				width			: 60px;
-				height			: 35px;
-				font-size		: 18px;
-				padding-top		: 4px;
-				margin-left		: 2%;
-				background-color: #fff;
-				outline			: none;
-				border-color	: #aaa #777 #777 #aaa;
+				width					: 60px;
+				height					: 35px;
+				font-size				: 18px;
+				padding-top				: 4px;
+				margin-left				: 2%;
+				background-color		: #fff;
+				outline					: none;
+				border-color			: #aaa #777 #777 #aaa;
 			}
 			
 			input[type="button"]:active{
-				background-color: #ddd;
+				background-color		: #ddd;
+			}
+			
+			#pag_1{
+				position				: absolute;
+				width					: 100%;
+				height					: 100%;
+				top						: 0;
+				left					: 0;
+				margin					: 10px;
+				min-height				: 450px;
+				min-width				: 820px;
 			}
 			
 			#operation{
@@ -35,126 +54,196 @@
 			}
 				
 			#speedRange{
-				width				: 95%;
-				-webkit-appearance	: none;
-				margin-top			: 25px;
-				height				: 10px;
-				border-radius		: 5px;  
-				background			: #d3d3d3;
-				outline				: none;
-				opacity				: 0.7;
-				-webkit-transition	: .2s;
-				transition			: opacity .2s;
+				width					: 95%;
+				-webkit-appearance		: none;
+				margin-top				: 25px;
+				height					: 10px;
+				border-radius			: 5px;  
+				background				: #d3d3d3;
+				outline					: none;
+				opacity					: 0.7;
+				-webkit-transition		: .2s;
+				transition				: opacity .2s;
 			}
 			#speedRange::-webkit-slider-thumb {
-				-webkit-appearance	: none;
-				appearance			: none;
-				width				: 25px;
-				height				: 25px;
-				border-radius		: 50%; 
-				background			: #333;
-				cursor				: pointer;
+				-webkit-appearance		: none;
+				appearance				: none;
+				width					: 25px;
+				height					: 25px;
+				border-radius			: 50%; 
+				background				: #333;
+				cursor					: pointer;
 			}
 
 			#speedRange::-moz-range-thumb {
-				width				: 25px;
-				height				: 25px;
-				border-radius		: 50%;
-				background			: #333;
-				cursor				: pointer;
+				width					: 25px;
+				height					: 25px;
+				border-radius			: 50%;
+				background				: #333;
+				cursor					: pointer;
 			}
 			
-			#ckb_div{
-				width			: 85%;
-				height			: 35px;
-				margin-top		: 25px;
+			#ckb_div{	
+				width					: 85%;
+				height					: 35px;
+				margin-top				: 25px;
 			}
 			
-			#nomus{
-				margin-top		: 2px;
-				float			: left;
+			#nomus{	
+				margin-top				: 2px;
+				float					: left;
 			}
 			
-			#button_div{
-				margin-top		: 30px;
-				width			: 440px;
+			#button_div{	
+				margin-top				: 30px;
+				width					: 440px;
 			}
 			
-			#Produzioni_div{
-				height			: 100%;
-				width			: 35%;
-				float			: left;
+			#Produzioni_div{	
+				height					: 100%;
+				width					: 35%;
+				float					: left;
 			}
 			
 			#Produzioni_txta{
-				width			: 100%;
-				height			: 80%;
+				width					: 100%;
+				height					: 80%;
 				
 			}
 			
 			#MDT_div{
-				height			: 100%;
-				width			: 60%;
-				float			: left;
+				height					: 100%;
+				width					: 60%;
+				float					: left;
 			}
 			
 			#enableState{
-				bottom			: 0;
-				float			: right;
+				bottom					: 0;
+				float					: right;
 			}
 			
 			#Stati_txta{
-				width			: 90%;
-				margin-top		: 25px;
-				height			: 50px;
+				width					: 90%;
+				margin-top				: 25px;
+				height					: 50px;
 			}
 			
 			#nastro{
-				width			: 90%;
-				font-size		: 1.4em;
-				letter-spacing	: .4rem;
-				border 			: .1px solid #bbb;
-				line-height		: 2em;
-				padding			: 0 .5em;
-				outline			: none;
+				display					: inline-block;
+				width					: 90%;
+				font-size				: 1.4em;
+				letter-spacing			: .4rem;
+				border 					: .1px solid #bbb;
+				line-height				: 2em;
+				padding					: 0 .5em;
+				outline					: none;
+				overflow-x				: scroll;
+				white-space				: nowrap;
 			}
 			
 			#titolo{
-				text-align		: center;
-				width			: 55%;
-				margin-left		: 22.5%;
-				padding			: 10px;
+				text-align				: center;
+				width					: 55%;
+				margin-left				: 22.5%;
+				padding					: 10px;
 			}
-		
+			
+			#help_div{
+				position 				: absolute;
+				width					: 100%;
+				height					: 100%;
+				margin					: 0;
+				padding					: 0;
+				background-color		: #44444477;
+			}
+
+			#help_frame{
+				position				: absolute;
+				top						: 0;
+				left					: 0;
+				width					: 75%;
+				height					: 75%;
+				min-height				: calc(450px * 75 / 100);
+				margin-left				: 12.5%;
+				border					: 1px solid #000;
+				border-radius			: 15px;
+				background-color		: #778895aa;
+			}
+			
+			#help_return{
+				width					: 100px;
+				background-color		: #99999944;
+				border-radius			: 5px;
+			}
+			
+			#help_txt{
+				width					: 100%;
+			}
+			
+			#help_btn{
+				position				: absolute;
+				border-radius			: 50%;
+				border					: 1px solid;
+				width					: 14px;
+				height					: 18px;
+				padding-left			: 6px;
+				padding-top				: 2px;
+				cursor					: pointer;
+				top						: 15px;
+				right					: 15px;
+			}
+			
+			#file-selector{
+				margin-top				: 25px;
+				margin-left				: 40px;
+			}
+			
 		</style>
 	</head>
 	<body>
-		<div id="Produzioni_div">
-			<h2>Produzioni</h2>
-			<textarea id="Produzioni_txta"></textarea>
-		</div>
-		<div id="MDT_div">
-			<h1 id="titolo">Macchina di Turing</h1>
-			<div id="div_d1">
-				<div contenteditable id="nastro">
-				</div>
-				<div id="operation">
-					<div id="button_div">
-						<input type="button" id="runTimeBtn" value="RUN">
-						<input type="button" id="beforeBtn"  value="<">
-						<input type="button" id="pauseBtn"   value="II">
-						<input type="button" id="nextBtn"    value=">">
-						<input type="button" id="endBtn"     value=">>">
-						<input type="button" id="loadNa"     value="RST">
-					</div>
-					<input type="range" id="speedRange" min="1" max="60">
-				</div>
-				<div id="ckb_div">
-					<p id="nomus">Stati Finali Manuali</p>
-					<input type="checkbox" id="enableState" onclick="cliccato()">
-				</div>
+	
+		<div id="pag_1">
+			<div id="Produzioni_div">
+				<h2>Produzioni</h2>
+				<textarea id="Produzioni_txta"></textarea>
 			</div>
-			<textarea id="Stati_txta"></textarea>
+			<div id="MDT_div">
+				<h1 id="titolo">Macchina di Turing</h1>
+				<div id="div_d1">
+					<div contenteditable id="nastro">
+					</div>
+					<div id="operation">
+						<div id="button_div">
+							<input type="button" id="runTimeBtn" value="RUN">
+							<input type="button" id="beforeBtn"  value="<">
+							<input type="button" id="pauseBtn"   value="II">
+							<input type="button" id="nextBtn"    value=">">
+							<input type="button" id="endBtn"     value=">>">
+							<input type="button" id="loadNa"     value="RST">
+						</div>
+						<input type="range" id="speedRange" min="1" max="60">
+					</div>
+					<div id="ckb_div">
+						<p id="nomus">Stati Finali Manuali</p>
+						<input type="checkbox" id="enableState" onclick="cliccato()">
+					</div>
+				</div>
+				<textarea id="Stati_txta"></textarea>
+				<input type="file" id="file-selector" multiple>
+			</div>
+		</div>
+		<div id="help_div">
+			<div id="help_frame">
+				<div id="help_txt">
+					<h2>Interprete della macchina di Turing</h2>
+					L'interprete consente di eseguire programmi per la macchina di turing; i programmi per essere eseguiti devono contenere almeno una produzione, l'unico carattere obbligatorio da usare è il $, come anche la produzione "$ q0 $qi r" che serve a portare la macchina dallo stato iniziale q0 allo stato qi dopo aver letto il primo carattere $ che non va inserito nell'input.</br>Lo stato finale di default è l'ultimo stato nella lista delle produzioni. Nel caso vi siano più stati finali o si vogliano aggiungerli manualmente basta cliccare sulla check-box e aggiungerli separati da la virgola. Una volta inserite le produzioni o quando si apportano modifiche bisogna premere RST per reimpostare la macchina</br></br>Esempio di MdT che riscrive l'input così com'è</br>&emsp;$ q0 $ q1 r</br>&emsp;1 q1 1 q1 r</br>&emsp;0 q1 0 q1 r</br>&emsp;$ q1 $ q2 r
+				</div>
+				<input type="button" value="indietro" id="help_return">
+			</div>
+			
+		</div>
+		<div id="help_btn">
+				?  
 		</div>
 	</body>
 </html>

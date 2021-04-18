@@ -1,0 +1,37 @@
+{ "name" : "Copy Binary String","Produzioni":"$ qi $ q0 r
+0 q0 0 q0 r
+1 q0 1 q0 r
+$ q0 C q1 l
+0 q1 0 q1 l
+1 q1 1 q1 l
+$ q1 $ q2 r
+0 q2 Y q3 r
+0 q3 0 q3 r
+1 q3 1 q3 r
+C q3 C q4 r
+0 q4 0 q4 r
+1 q4 1 q4 r
+$ q4 0 q5 l
+0 q5 0 q5 l
+1 q5 1 q5 l
+C q5 C q6 l
+0 q6 0 q6 l
+1 q6 1 q6 l
+Y q6 Y q2 r
+1 q2 X q7 r
+0 q7 0 q7 r
+1 q7 1 q7 r
+C q7 C q8 r
+0 q8 0 q8 r
+1 q8 1 q8 r
+$ q8 1 q9 l
+1 q9 1 q9 l
+0 q9 0 q9 l
+C q9 C q10 l
+1 q10 1 q10 l
+0 q10 0 q10 l
+X q10 X q2 r
+C q2 C q11 l
+X q11 1 q11 l
+Y q11 0 q11 l
+$ q11 $ q12 r", "StatiFinali":"q12"}
