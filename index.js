@@ -61,11 +61,9 @@ window.onload = function(){
 			else MdT.reloadOld();
 			
 			var resa  = MdT.doProduction();
-			console.log(resa);
 			if(resa.res!="ERROR")
 				writer.write({V: resa.res.toString().replaceAll(",",""), I:resa.indice});
-			else
-				console.log(resa);
+			
 			$i("endBtn").enable = false;
 			$i("nextBtn").enable = false;
 		}
@@ -77,7 +75,6 @@ window.onload = function(){
 			if(!MdT.isReady() && !MdT.isEnded()) 
 				MdT.loadNastro($i("nastro").textContent);
 			var resa = MdT.next();
-				console.log(resa);
 			if(resa.res!="ERROR")
 				writer.write({V: resa.res.toString().replaceAll(",",""), I:resa.indice});
 			if(resa.Istance.getState().getType()==2){
@@ -135,8 +132,9 @@ window.onload = function(){
 		}
 	};
 	
-	$i("speedRange").onclick	= () => {
-		fps = $i("speedRange").value;
+	$i("speedRange").onmousemove = () => {
+		if(event.buttons==1)
+			fps = $i("speedRange").value;
 	};
 	
 	$i("help_div").style.display = "none";
@@ -182,7 +180,7 @@ function openFile(files){
 	
 	reader.onload = function(event) {
 		var testo = event.target.result;
-		console.log((testo).replaceAll("\r\n","\\n"));
+		//console.log((testo).replaceAll("\r\n","\\n"));
 		var prg = (JSON.parse((testo).replaceAll("\r\n","\\n")));
 		$i("Produzioni_txta").value = prg.Produzioni;
 		$i("Stati_txta").value = prg.StatiFinali;
